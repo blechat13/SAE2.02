@@ -1,4 +1,4 @@
-package graph;
+package solver;
 
 public class GraphSoluce {
 

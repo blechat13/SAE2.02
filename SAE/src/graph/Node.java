@@ -1,6 +1,6 @@
 package graph;
 
-import java.util.ArrayList;
+import java.util.Set;
 
 import dungeon.Coord;
 
@@ -8,7 +8,7 @@ public class Node {
 	//VARIABLE
 	private String name;
 	
-	private ArrayList<Node> neighbors;
+	private Set<Node> neighbors;
 	
 	private Coord coord;
 	
@@ -18,7 +18,7 @@ public class Node {
 		this.coord = coord;
 	}
 	
-	public ArrayList<Node> neigbors() {
+	public Set<Node> neigbors() {
 		return neighbors;
 	}
 	
