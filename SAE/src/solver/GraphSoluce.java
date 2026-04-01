@@ -18,10 +18,6 @@ public class GraphSoluce {
 	
 	public List<Node> getSoluce(){
 		
-		
+		return soluce;
 	}
-	
-	
-	
-
 }
