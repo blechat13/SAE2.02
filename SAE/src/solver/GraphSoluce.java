@@ -16,7 +16,8 @@ public class GraphSoluce {
 		soluce.add(node);
 	}
 	
-	
-	
-
+	public List<Node> getSoluce(){
+		
+		return soluce;
+	}
 }

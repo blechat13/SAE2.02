@@ -2,7 +2,7 @@ package solver;
 
 import graph.Node;
 
-public class SolverGeneric implements Solver{
+public abstract class SolverGeneric implements Solver{
 	
 	private GraphSoluce graphSoluce;
 	private Node startingNode;
@@ -51,13 +51,11 @@ public class SolverGeneric implements Solver{
 		
 	}
 	
-	protected void resolve() {
-		
-	}
+	protected abstract void resolve();
 	
 	private void initializeResolution() {
 		
-		
+		steps = 0;
 	}
 	
 

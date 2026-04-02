@@ -8,4 +8,14 @@ public class SolverWithBFS extends SolverGeneric{
 		super(node1, node2);
 	}
 
+	@Override
+	protected void resolve() {
+		
+		
+	}
+	
+	public void DFS(GraphSoluce graph) {
+		
+	}
+
 }

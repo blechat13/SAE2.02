@@ -1,0 +1,16 @@
+!SESSION 2026-04-02 08:55:11.297 -----------------------------------------------
+eclipse.buildId=4.39.0.20260305-0817
+java.version=21.0.10
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2026-04-02 08:55:16.988
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2026-04-02 08:55:33.738
+!MESSAGE Logback config file: /home/baptiste/Documents/GitHub/SAE2.02/SAE/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.101.20251017-1242.xml
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2026-04-02 08:55:52.213
+!MESSAGE Setup tasks were performed during startup updating 2 preferences. See '/home/baptiste/.var/app/org.eclipse.Java/eclipse/configuration/org.eclipse.oomph.setup/setup.log' for details

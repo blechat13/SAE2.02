@@ -8,4 +8,10 @@ public class SolverWithAstar extends SolverGeneric{
 		super(node1, node2);
 	}
 
+	@Override
+	protected void resolve() {
+		
+		
+	}
+
 }
