@@ -43,7 +43,7 @@ public class SolverWithDFS extends SolverGeneric{
 	public void Prof(Node n) {
 		marquer.add(n);
 		for(Node v : n.neighbors()) {
-			step ++;
+			this.step ++;
 			if(!marquer.contains(v)) {
 				parent.put(v,n);
 				if(!v.equals(getEndingNode())) {
