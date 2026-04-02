@@ -49,6 +49,7 @@ public abstract class SolverGeneric implements Solver{
 	public void solve() {
 		
 		resolve();
+		initializeResolution();
 	}
 	
 	protected abstract void resolve();
