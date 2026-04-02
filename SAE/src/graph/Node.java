@@ -18,7 +18,7 @@ public class Node {
 		this.coord = coord;
 	}
 	
-	public Set<Node> neigbors() {
+	public Set<Node> getNeighbors() {
 		return neighbors;
 	}
 	
