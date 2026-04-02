@@ -11,7 +11,7 @@ public class SolverWithDFS extends SolverGeneric{
 	@Override
 	protected void resolve() {
 
-		
+		for (Node s : graph )
 	}
 
 }

@@ -13,5 +13,9 @@ public class SolverWithBFS extends SolverGeneric{
 		
 		
 	}
+	
+	public void DFS(GraphSoluce graph) {
+		
+	}
 
 }
