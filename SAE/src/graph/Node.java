@@ -5,14 +5,14 @@ import java.util.Set;
 import dungeon.Coord;
 
 public class Node {
-	//VARIABLE
+
 	private String name;
 	
 	private Set<Node> neighbors;
 	
 	private Coord coord;
 	
-	//METHODE
+
 	public Node(String name, Coord coord) {
 		this.name = name;
 		this.coord = coord;
