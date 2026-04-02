@@ -48,7 +48,7 @@ public abstract class SolverGeneric implements Solver{
 	@Override
 	public void solve() {
 		
-		
+		resolve();
 	}
 	
 	protected abstract void resolve();

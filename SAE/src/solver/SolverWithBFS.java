@@ -1,15 +1,20 @@
 package solver;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 import graph.Node;
 
 public class SolverWithBFS extends SolverGeneric {
 	
-	private List marquer = new ArrayList();
+	private Set<Node> marquer;
+	private Map<Node, Node> parent;
+	private List<Node> chemin;
+	private GraphSoluce solutiongraph;
 
 	public SolverWithBFS(Node node1, Node node2) {
 		super(node1, node2);
@@ -27,7 +32,39 @@ public class SolverWithBFS extends SolverGeneric {
 		while (!file.isEmpty()) {
 			
 			Node s = file.remove();
+			for (Node v : s.neigbors()) {
+				if (v.equals(getEndingNode())) {
+					file.add(v);
+					parent.put(v, s);
+					incSteps();
+					return;
+				}
+				if (!marquer.contains(v)) {
+					marquer.add(v);
+					file.add(v);
+					incSteps();
+				}
+			}
 		}
+		
+		Node actuel = getEndingNode();
+		
+		while (actuel != getStartingNode()) {
+			chemin.add(actuel);
+			actuel = parent.get(actuel);
+		}
+		Collections.reverse(chemin);
+	}
+	
+	@Override
+	public GraphSoluce getGraphSoluce() {
+		
+		for (Node i : chemin) {
+			solutiongraph.add(i);
+		}
+		
+		return solutiongraph;
+		
 	}
 
 }
