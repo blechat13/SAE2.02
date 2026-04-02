@@ -86,7 +86,7 @@ public class Scenarios {
 		long endingTime = System.currentTimeMillis();
 		long duration = endingTime - startingTime;
 		
-		GraphSoluce soluceGraphBFS = solver.getGraphSoluce();
+		solver.GraphSoluce soluceGraphBFS = solver.getGraphSoluce();
 
 		DungeonSoluce soluceDonjonBFS = mapping.transform(soluceGraphBFS);
 		
