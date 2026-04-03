@@ -1,6 +1,6 @@
 package solver;
 
-import java.util.ArrayDeque;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +15,7 @@ public class SolverWithBFS extends SolverGeneric {
 	private Map<Node, Node> parent;
 	private List<Node> chemin;
 	private GraphSoluce solutiongraph;
+	private Queue<Node> file;
 		
 	public SolverWithBFS(Node node1, Node node2) {
 		super(node1, node2);
@@ -23,7 +24,6 @@ public class SolverWithBFS extends SolverGeneric {
 	@Override
 	protected void resolve() {
 			
-		Queue<Node> file = new ArrayDeque();
 			
 		marquer.add(getStartingNode());
 			
