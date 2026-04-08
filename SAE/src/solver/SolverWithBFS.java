@@ -22,8 +22,6 @@ public class SolverWithBFS extends SolverGeneric {
 	public SolverWithBFS(Node node1, Node node2) {
 		super(node1, node2);
 		
-		GraphSoluce graphsoluce = new GraphSoluce();
-		
 		marquer = new HashSet();
 		parent = new HashMap();
 		file = new ArrayDeque();
