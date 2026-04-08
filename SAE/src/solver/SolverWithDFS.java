@@ -3,8 +3,6 @@ package solver;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiFunction;
-import graph.Graph;
 import graph.Node;
 
 public class SolverWithDFS extends SolverGeneric{
@@ -31,25 +29,31 @@ public class SolverWithDFS extends SolverGeneric{
 		
 		Prof(getStartingNode());
 		
-		if(parent.containsKey(getEndingNode())) {
+		if(parent.containsKey(getEndingNode())) {// si il y a la sortie dans les enfants d'un noeud
 			Node x = getEndingNode();
-			while(x!=null) {
-				solution.add(x);
-				x = parent.get(x);
+			
+			while(x!=null) {//tant qu'on est pas remonté jusqu'à l'entrée
+				step++;
+				solution.add(x);//on ajoute le noeud qu'on observe dans la solution
+				x = parent.get(x); //on prend le parent du noeud qu'on vient de parcourir
 			}
+			solution.reversed();
 		}
 	}
 	
-	public void Prof(Node n) {
-		marquer.add(n);
-		for(Node v : n.neighbors()) {
+	public void Prof(Node n) {//algo profondeur
+		marquer.add(n);//on marque le noeud
+		for(Node v : n.neighbors()) {//pour chaque voisin
 			this.step ++;
-			if(!marquer.contains(v)) {
-				parent.put(v,n);
-				if(!v.equals(getEndingNode())) {
-					Prof(v);
+			
+			if(!marquer.contains(v)) {//si le voisin n'est pas marqué
+				parent.put(v,n);//on qualifie n comme le parent de v
+				
+				if(!v.equals(getEndingNode())) {//si on est pas à la sortie
+					Prof(v);//on continue l'algo
 				}
 			}
 		}
 	}
+	
 }
