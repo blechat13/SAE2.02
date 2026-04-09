@@ -58,8 +58,6 @@ public class Node {
 
 	    return otherNode.name.equals(this.name) 
 	        && otherNode.coord.equals(this.coord);
-	        // ⚠️ on retire la comparaison des neighbors
-	        // sinon equals() devient récursif → StackOverflow !
 	}
 
 	@Override
