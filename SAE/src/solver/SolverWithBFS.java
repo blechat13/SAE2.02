@@ -1,7 +1,11 @@
 package solver;
 
+
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -13,19 +17,21 @@ public class SolverWithBFS extends SolverGeneric {
 
 	private Set<Node> marquer;
 	private Map<Node, Node> parent;
-	private GraphSoluce solutiongraph;
+	private Queue<Node> file;
 		
 	public SolverWithBFS(Node node1, Node node2) {
 		super(node1, node2);
+		
+		marquer = new HashSet();
+		parent = new HashMap();
+		file = new ArrayDeque();
 	}
 
 	@Override
 	protected void resolve() {
-			
-		Queue<Node> file = new ArrayDeque();
-			
+		
+		
 		marquer.add(getStartingNode());
-			
 		file.add(getStartingNode());
 			
 		while (!file.isEmpty()) {
@@ -48,12 +54,12 @@ public class SolverWithBFS extends SolverGeneric {
 			
 		Node actuel = getEndingNode();
 			
-		while (actuel != getStartingNode()) {
+		while (actuel != null) {
+			getGraphSoluce().add(actuel);
 			actuel = parent.get(actuel);
 		}
-		Collections.reverse(chemin);
+		Collections.reverse(getGraphSoluce().getSoluce());
 	}
-
 }
 
 	
