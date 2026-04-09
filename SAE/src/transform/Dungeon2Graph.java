@@ -1,7 +1,9 @@
 package transform;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import dungeon.Direction;
@@ -10,6 +12,7 @@ import dungeon.DungeonSoluce;
 import dungeon.Room;
 import graph.Graph;
 import graph.Node;
+import solver.GraphSoluce;
 
 public class Dungeon2Graph {
 	
@@ -17,7 +20,6 @@ public class Dungeon2Graph {
     private Map<Node, Room> Node2Room = new HashMap<>(); //dico <Node, Room>
     private Set<Node> listNode = new HashSet<>(); //liste des noeuds 
     private Graph graph = new Graph(); //instanciation graphe
-    private Set<Node> listDirection = new HashSet<>(); 
     private Dungeon dungeon;
 	
     
@@ -63,23 +65,48 @@ public class Dungeon2Graph {
 			Room vSouth = mappedRoom(n).getNextRooms().get(Direction.SOUTH); //voisin coté sud
 			Room vWest = mappedRoom(n).getNextRooms().get(Direction.WEST); //voisin coté ouest
 			
-			if(!vEast.equals(null)) {//si voisin Est ne vaut pas "null" alors
+			if(vEast != null) {//si voisin Est ne vaut pas "null" alors
 				graph.addEdge(n, mappedNode(vEast)); //on créer une arête
 			}
-			if(!vNorth.equals(null)) {
+			if(vNorth != null) {
 				graph.addEdge(n, mappedNode(vNorth));
 			}
-			if(!vSouth.equals(null)) {
+			if(vSouth != null) {
 				graph.addEdge(n, mappedNode(vSouth));
 			}
-			if(!vWest.equals(null)) {
+			if(vWest != null) {
 				graph.addEdge(n, mappedNode(vWest));
 			}
 		}
 	}
 	
-	public void transform(DungeonSoluce ds) {
-		
+	public DungeonSoluce transform(GraphSoluce gs) {
+	    DungeonSoluce ds = new DungeonSoluce();
+	    List<Node> soluce = gs.getSoluce();
+
+	    for (int i = 0; i < soluce.size() - 1; i++) {//on regarde tout les noeuds de la solution sauf le dernier
+	        Node current = soluce.get(i);
+	        Node next = soluce.get(i + 1); // noeud suivant de la liste solution
+
+	        Room vEast  = mappedRoom(current).getNextRooms().get(Direction.EAST);
+	        Room vNorth = mappedRoom(current).getNextRooms().get(Direction.NORTH);
+	        Room vSouth = mappedRoom(current).getNextRooms().get(Direction.SOUTH);
+	        Room vWest  = mappedRoom(current).getNextRooms().get(Direction.WEST);
+
+	        if (vEast  != null && mappedNode(vEast).equals(next)) {
+	        	ds.addDirection(Direction.EAST);
+	        }
+	        if (vNorth != null && mappedNode(vNorth).equals(next)) {
+	        	ds.addDirection(Direction.NORTH);
+	        }
+	        if (vSouth != null && mappedNode(vSouth).equals(next)) {
+	        	ds.addDirection(Direction.SOUTH);
+	        }
+	        if (vWest  != null && mappedNode(vWest).equals(next)) {
+	        	ds.addDirection(Direction.WEST);
+	        }
+	    }
+	    return ds;
 	}
 	
 	public Graph getGraph() {

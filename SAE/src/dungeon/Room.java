@@ -2,6 +2,7 @@ package dungeon;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Room {
 
@@ -39,6 +40,19 @@ public class Room {
 
 	public Map<Direction, Room> getNextRooms() {
 		return nextRooms;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (!(obj instanceof Room)) return false;
+	    Room other = (Room) obj;
+	    return this.name.equals(other.name) && this.coords.equals(other.coords);
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(name, coords);
 	}
 
 }

@@ -69,9 +69,10 @@ public class Scenarios {
 		Node nodeA = mapping.mappedNode(dungeon.getRoomA());
 		Node nodeB = mapping.mappedNode(dungeon.getRoomB());
 		
+		
 		solveWithSolver(mapping, new SolverWithDFS(nodeA, nodeB));
-		solveWithSolver(mapping, new SolverWithBFS(nodeA, nodeB));
-		solveWithSolver(mapping, new SolverWithAstar(nodeA, nodeB));
+		//solveWithSolver(mapping, new SolverWithBFS(nodeA, nodeB));
+		//solveWithSolver(mapping, new SolverWithAstar(nodeA, nodeB));
 		
 	}
 

@@ -12,7 +12,7 @@ public abstract class SolverGeneric implements Solver{
 	
 	
 	public SolverGeneric(Node node1, Node node2) {
-		
+		this.graphSoluce = new GraphSoluce();
 		this.startingNode = node1;
 		this.endingNode = node2;
 		
@@ -47,17 +47,14 @@ public abstract class SolverGeneric implements Solver{
 
 	@Override
 	public void solve() {
-		
-		resolve();
 		initializeResolution();
+		resolve();
 	}
 	
 	protected abstract void resolve();
 	
-	private void initializeResolution() {
-		
+	public void initializeResolution() {
 		steps = 0;
+		graphSoluce.clear();
 	}
-	
-
 }

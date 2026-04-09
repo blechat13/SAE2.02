@@ -1,11 +1,12 @@
 package solver;
 
+import java.util.ArrayList;
 import java.util.List;
 import graph.Node;
 
 public class GraphSoluce {
 	
-	private List<Node> soluce;
+	private List<Node> soluce = new ArrayList<Node>();
 
 	public GraphSoluce() {
 
@@ -19,5 +20,9 @@ public class GraphSoluce {
 	public List<Node> getSoluce(){
 		
 		return soluce;
+	}
+	
+	public void clear() {
+		soluce.clear();
 	}
 }

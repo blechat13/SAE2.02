@@ -1,17 +1,19 @@
 package graph;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
-
 import dungeon.Coord;
 
 public class Node {
 
 	private String name;
 	
-	private Set<Node> neighbors;
+	private Set<Node> neighbors = new HashSet<Node>();
 	
 	private Coord coord;
 	
+	private int heuristique;
 
 	public Node(String name, Coord coord) {
 		this.name = name;
@@ -47,16 +49,21 @@ public class Node {
 		return coord;
 	}
 	
+	@Override
 	public boolean equals(Object object) {
-		if(this == object) {
-			return true;
-		}
-		if(object==null || !(object instanceof Node)) {
-			return false;
-		}
-		
-		Node otherNode = (Node) object;
-		
-		return otherNode.name == this.name && otherNode.coord == this.coord && otherNode.neighbors.equals(this.neighbors);
+	    if (this == object) return true;
+	    if (object == null || !(object instanceof Node)) return false;
+
+	    Node otherNode = (Node) object;
+
+	    return otherNode.name.equals(this.name) 
+	        && otherNode.coord.equals(this.coord);
+	        // ⚠️ on retire la comparaison des neighbors
+	        // sinon equals() devient récursif → StackOverflow !
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(name, coord);
 	}
 }

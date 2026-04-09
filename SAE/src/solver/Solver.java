@@ -9,4 +9,6 @@ public interface Solver {
 	
 	public int getSteps();
 
+	void initializeResolution();
+
 }

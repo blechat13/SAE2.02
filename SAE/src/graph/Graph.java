@@ -1,12 +1,13 @@
 package graph;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Graph {
 
-	private Set<Node> listNode;
+	private Set<Node> listNode = new HashSet<Node>();
 	
-	public void Graph() {
+	public Graph() {
 		
 	}
 	

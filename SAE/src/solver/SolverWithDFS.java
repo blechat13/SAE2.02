@@ -1,30 +1,43 @@
 package solver;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import graph.Node;
 
-public class SolverWithDFS extends SolverGeneric{
 
-	private int step = 0;
+public class SolverWithDFS extends SolverGeneric{
 	
-	private ArrayList<Node> marquer;
-	
-	private ArrayList<Node> solution;
+	private Set<Node> marquer;
 	
 	private Map<Node, Node> parent;
 	
 	
 	public SolverWithDFS(Node node1, Node node2) {
 		super(node1, node2);
-		marquer = new ArrayList<>();
-	    solution = new ArrayList<>();
+		marquer = new HashSet<>();
 	    parent = new HashMap<>();
+	}
+	
+	@Override
+	public void initializeResolution() {
+	    super.initializeResolution(); 
+	    marquer.clear();
+	    parent.clear();
 	}
 
 	@Override
 	protected void resolve() {
+		if (getStartingNode() == null || getEndingNode() == null) {
+	        System.err.println("Erreur : nœud de départ ou d'arrivée null !");
+	        return;
+	    }
+		
 		parent.put(getStartingNode(), null);
 		
 		Prof(getStartingNode());
@@ -33,18 +46,19 @@ public class SolverWithDFS extends SolverGeneric{
 			Node x = getEndingNode();
 			
 			while(x!=null) {//tant qu'on est pas remonté jusqu'à l'entrée
-				step++;
-				solution.add(x);//on ajoute le noeud qu'on observe dans la solution
+				incSteps();
+				getGraphSoluce().add(x);//on ajoute le noeud qu'on observe dans la solution
 				x = parent.get(x); //on prend le parent du noeud qu'on vient de parcourir
 			}
-			solution.reversed();
+			Collections.reverse(getGraphSoluce().getSoluce());
 		}
 	}
 	
 	public void Prof(Node n) {//algo profondeur
 		marquer.add(n);//on marque le noeud
+		
 		for(Node v : n.neighbors()) {//pour chaque voisin
-			this.step ++;
+			incSteps();
 			
 			if(!marquer.contains(v)) {//si le voisin n'est pas marqué
 				parent.put(v,n);//on qualifie n comme le parent de v

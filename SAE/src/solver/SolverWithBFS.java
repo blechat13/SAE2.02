@@ -13,7 +13,6 @@ public class SolverWithBFS extends SolverGeneric {
 
 	private Set<Node> marquer;
 	private Map<Node, Node> parent;
-	private List<Node> chemin;
 	private GraphSoluce solutiongraph;
 		
 	public SolverWithBFS(Node node1, Node node2) {
@@ -50,21 +49,11 @@ public class SolverWithBFS extends SolverGeneric {
 		Node actuel = getEndingNode();
 			
 		while (actuel != getStartingNode()) {
-			chemin.add(actuel);
 			actuel = parent.get(actuel);
 		}
 		Collections.reverse(chemin);
 	}
-	@Override
-	public GraphSoluce getGraphSoluce() {
-		
-		for (Node i : chemin) {
-			solutiongraph.add(i);
-		}
-		
-		return solutiongraph;
-		
-	}
+
 }
 
 	

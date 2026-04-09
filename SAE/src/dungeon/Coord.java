@@ -1,5 +1,7 @@
 package dungeon;
 
+import java.util.Objects;
+
 public class Coord {
 
 	private int x;
@@ -36,6 +38,11 @@ public class Coord {
 		if (y != other.y)
 			return false;
 		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+	    return Objects.hash(x, y);
 	}
 	
 	
