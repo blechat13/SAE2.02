@@ -71,8 +71,8 @@ public class Scenarios {
 		
 		
 		solveWithSolver(mapping, new SolverWithDFS(nodeA, nodeB));
-		//solveWithSolver(mapping, new SolverWithBFS(nodeA, nodeB));
-		//solveWithSolver(mapping, new SolverWithAstar(nodeA, nodeB));
+		solveWithSolver(mapping, new SolverWithBFS(nodeA, nodeB));
+		solveWithSolver(mapping, new SolverWithAstar(nodeA, nodeB));
 		
 	}
 

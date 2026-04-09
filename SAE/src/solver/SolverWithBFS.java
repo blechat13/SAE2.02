@@ -26,39 +26,45 @@ public class SolverWithBFS extends SolverGeneric {
 		parent = new HashMap();
 		file = new ArrayDeque();
 	}
+	
+	@Override
+	public void initializeResolution() {
+	    super.initializeResolution(); 
+	    marquer.clear();
+	    parent.clear();
+	    file.clear();
+	}
 
 	@Override
 	protected void resolve() {
-		
-		
-		marquer.add(getStartingNode());
-		file.add(getStartingNode());
-			
-		while (!file.isEmpty()) {
-				
-			Node s = file.remove();
-			for (Node v : s.neighbors()) {
-				if (v.equals(getEndingNode())) {
-					file.add(v);
-					parent.put(v, s);
-					incSteps();
-					return;
-				}
-				if (!marquer.contains(v)) {
-					marquer.add(v);
-					file.add(v);
-					incSteps();
-				}
-			}
-		}
-			
-		Node actuel = getEndingNode();
-			
-		while (actuel != null) {
-			getGraphSoluce().add(actuel);
-			actuel = parent.get(actuel);
-		}
-		Collections.reverse(getGraphSoluce().getSoluce());
+	    marquer.add(getStartingNode());
+	    file.add(getStartingNode());
+
+	    bouclewhile:
+	    while (!file.isEmpty()) {
+	        Node s = file.remove();
+	        incSteps();
+	        
+	        for (Node v : s.neighbors()) {
+	            if (!marquer.contains(v)) {
+	                marquer.add(v);
+	                parent.put(v, s); // ← toujours enregistrer le parent
+
+	                if (v.equals(getEndingNode())) {
+	                    break bouclewhile; 
+	                }
+	                file.add(v);
+	            }
+	        }
+	    }
+
+	    // Reconstruction du chemin
+	    Node actuel = getEndingNode();
+	    while (actuel != null) {
+	        getGraphSoluce().add(actuel);
+	        actuel = parent.get(actuel);
+	    }
+	    Collections.reverse(getGraphSoluce().getSoluce());
 	}
 }
 
