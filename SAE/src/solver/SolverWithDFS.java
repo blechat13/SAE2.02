@@ -46,7 +46,6 @@ public class SolverWithDFS extends SolverGeneric{
 			Node x = getEndingNode();
 			
 			while(x!=null) {//tant qu'on est pas remonté jusqu'à l'entrée
-				incSteps();
 				getGraphSoluce().add(x);//on ajoute le noeud qu'on observe dans la solution
 				x = parent.get(x); //on prend le parent du noeud qu'on vient de parcourir
 			}
