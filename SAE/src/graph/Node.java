@@ -12,19 +12,17 @@ public class Node {
 	private Set<Node> neighbors = new HashSet<Node>();
 	
 	private Coord coord;
-	
-	private int heuristique;
 
 	public Node(String name, Coord coord) {
 		this.name = name;
 		this.coord = coord;
 	}
 	
-	public Set<Node> neighbors() {
+	public Set<Node> neighbors() { //renvoie la liste des voisins du noeud
 		return neighbors;
 	}
 	
-	public void addNeigbour(Node node) {
+	public void addNeigbour(Node node) { // ajoute un voisin à la liste du noeud
 		neighbors.add(node);
 	}
 	
@@ -62,6 +60,8 @@ public class Node {
 
 	@Override
 	public int hashCode() {
+		 // Génère un code de hachage basé sur 'name' et 'coord'.
+	    // Deux objets égaux (selon equals()) doivent avoir le même hashCode.
 	    return Objects.hash(name, coord);
 	}
 }
