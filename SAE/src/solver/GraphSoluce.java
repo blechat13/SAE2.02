@@ -22,7 +22,7 @@ public class GraphSoluce {
 		return soluce;
 	}
 	
-	public void clear() {
+	public void clear() { //méthode utilisé pour vidé la liste de solution
 		soluce.clear();
 	}
 }

@@ -53,7 +53,7 @@ public abstract class SolverGeneric implements Solver{
 	
 	protected abstract void resolve();
 	
-	public void initializeResolution() { // remettre le compteur de steps a 0
+	public void initializeResolution() { // remettre le compteur de steps a 0 et vider la liste de graphSoluce
 		steps = 0;
 		graphSoluce.clear();
 	}
