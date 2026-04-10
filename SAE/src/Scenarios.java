@@ -35,6 +35,8 @@ public class Scenarios {
 		solveDungeon(builder.createFourthDungeon());
 		solveDungeon(builder.createFifthDungeon());
 		solveDungeon(builder.createSixthDungeon());
+		solveDungeon(builder.createSeventhDungeon());
+		solveDungeon(builder.createHeighthDungeon());
 	}
 
 	private static void initLogger() {

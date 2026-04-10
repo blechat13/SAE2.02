@@ -135,5 +135,15 @@ public class DungeonBuilder {
 		String data = Util.usingBufferedReader("Donjon6.txt");
 		return (new GeneratorDungeonFrom(data)).getDungeon();
 	}
+	
+	public Dungeon createSeventhDungeon() {	
+		String data = Util.usingBufferedReader("Donjon7.txt");
+		return (new GeneratorDungeonFrom(data)).getDungeon();
+	}
+	
+	public Dungeon createHeighthDungeon() {	
+		String data = Util.usingBufferedReader("Donjon7.txt");
+		return (new GeneratorDungeonFrom(data)).getDungeon();
+	}
 
 }
