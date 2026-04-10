@@ -12,7 +12,7 @@ public class GraphSoluce {
 
 	}
 	
-	public void add(Node node) {
+	public void add(Node node) { // ajouter les noeud qui sont dans le chemin a la liste du resultat
 		
 		soluce.add(node);
 	}

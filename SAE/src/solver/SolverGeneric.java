@@ -46,14 +46,14 @@ public abstract class SolverGeneric implements Solver{
 	}
 
 	@Override
-	public void solve() {
+	public void solve() {  // on renitialise les valeurs avant de resoudre de nouveau le donjon
 		initializeResolution();
 		resolve();
 	}
 	
 	protected abstract void resolve();
 	
-	public void initializeResolution() {
+	public void initializeResolution() { // remettre le compteur de steps a 0
 		steps = 0;
 		graphSoluce.clear();
 	}

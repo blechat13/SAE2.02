@@ -28,11 +28,11 @@ public class SolverWithAstar extends SolverGeneric {
 
         openList = new PriorityQueue<Node>(new Comparator<Node>() {
             @Override
-            public int compare(Node s1, Node s2) {
+            public int compare(Node s1, Node s2) { // compare deux noeud pour savoir ou le placer dans la file
                 int heur1;
                 int heur2;
 
-                if (heuristique.containsKey(s1)) {
+                if (heuristique.containsKey(s1)) { //recupere les valeurs
                     heur1 = heuristique.get(s1);
                 } else {
                     return 1;
@@ -44,15 +44,21 @@ public class SolverWithAstar extends SolverGeneric {
                     return -1;
                 }
 
-                if (heur1 < heur2) return -1;
-                else if (heur1 > heur2) return 1;
-                else return 0;
+                if (heur1 < heur2) { //compare les valeurs
+                	return -1;
+                }
+                else if (heur1 > heur2) {
+                	return 1;
+                }
+                else {
+                	return 0;
+                }
             }
         });
     }
 
     @Override
-    public void initializeResolution() {
+    public void initializeResolution() { //pour reinitialiser toute les parametres
         super.initializeResolution();
         cout.clear();
         parent.clear();
@@ -62,7 +68,7 @@ public class SolverWithAstar extends SolverGeneric {
     }
 
     @Override
-    protected void resolve() {
+    protected void resolve() { // resolution avec l'algorithmes A*
 
         openList.add(getStartingNode());
         cout.put(getStartingNode(), 0);
@@ -77,11 +83,11 @@ public class SolverWithAstar extends SolverGeneric {
 
             if (u.equals(getEndingNode())) {
                 Node actuel = getEndingNode();
-                while (actuel != null) {
+                while (actuel != null) {  // fin de la partie parcours, on reforme le schema
                     getGraphSoluce().add(actuel);
                     actuel = parent.get(actuel);
                 }
-                Collections.reverse(getGraphSoluce().getSoluce());
+                Collections.reverse(getGraphSoluce().getSoluce()); // on remet dans l'ordre le chemin qu'on a trouvé
                 return;
             }
 
@@ -101,7 +107,7 @@ public class SolverWithAstar extends SolverGeneric {
         }
     }
 
-    private int manhattan(Node n1, Node n2) {
+    private int manhattan(Node n1, Node n2) { // fonction pour calculer la diastance de Manhattan
         return Math.abs(n2.getCoord().getX() - n1.getCoord().getX())
              + Math.abs(n2.getCoord().getY() - n1.getCoord().getY());
     }

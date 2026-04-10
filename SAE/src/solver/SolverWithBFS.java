@@ -40,7 +40,7 @@ public class SolverWithBFS extends SolverGeneric {
 	    marquer.add(getStartingNode());
 	    file.add(getStartingNode());
 
-	    bouclewhile:
+	    bouclewhile: // annotation permettant de sortir de la boucle while via le break
 	    while (!file.isEmpty()) {
 	        Node s = file.remove();
 	        incSteps();
